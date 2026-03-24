@@ -630,59 +630,124 @@ export default function App() {
                   {getShareText().split("\n").slice(1).join("\n")}
                 </div>
               </div>
-<div
-  style={{
-    display: "flex",
-    gap: "12px",
-    marginTop: "18px"
-  }}
->
-  <button
-    onClick={copyResult}
-    style={{
-      flex: 1,
-      borderRadius: "18px",
-      padding: "14px",
-      border: "none",
-      background: "#fafafa",
-      color: "#09090b",
-      fontWeight: 700,
-      cursor: "pointer"
-    }}
-  >
-    {copied ? "Copied!" : "Copy Result"}
-  </button>
+            <motion.div
+              initial={{ y: 18, opacity: 0, scale: 0.96 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 10, opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.22 }}
+              style={{
+                width: "100%",
+                maxWidth: "420px",
+                background: "rgba(24,24,27,0.96)",
+                border: "1px solid #27272a",
+                borderRadius: "28px",
+                boxShadow: "0 30px 70px rgba(0,0,0,0.4)",
+                padding: "22px"
+              }}
+            >
+              <div style={{ textAlign: "center" }}>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontSize: "30px",
+                    lineHeight: 1.1
+                  }}
+                >
+                  BINGO!
+                </h2>
 
-  <button
-    onClick={() => setShowResultModal(false)}
-    style={{
-      flex: 1,
-      borderRadius: "18px",
-      padding: "14px",
-      border: "1px solid #3f3f46",
-      background: "transparent",
-      color: "#fafafa",
-      fontWeight: 700,
-      cursor: "pointer"
-    }}
-  >
-    Close
-  </button>
-</div>
+                <p
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: 0,
+                    color: "#a1a1aa",
+                    fontSize: "15px",
+                    lineHeight: 1.45
+                  }}
+                >
+                  You completed today’s board.
+                </p>
+              </div>
 
-<p
-  style={{
-    marginTop: "14px",
-    marginBottom: 0,
-    textAlign: "center",
-    fontSize: "13px",
-    color: "#71717a",
-    lineHeight: 1.4
-  }}
->
-  Share it your Results! — paste your result anywhere.
-</p>
-</div>
+              <div
+                style={{
+                  marginTop: "18px",
+                  background: "#09090b",
+                  border: "1px solid #27272a",
+                  borderRadius: "20px",
+                  padding: "16px"
+                }}
+              >
+                <div
+                  style={{
+                    whiteSpace: "pre-wrap",
+                    textAlign: "center",
+                    fontSize: "24px",
+                    lineHeight: 1.45,
+                    letterSpacing: "0.08em"
+                  }}
+                >
+                  {getShareText()
+                    .split("\n")
+                    .slice(1)
+                    .join("\n")}
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "12px",
+                  marginTop: "18px"
+                }}
+              >
+                <button
+                  onClick={copyResult}
+                  style={{
+                    flex: 1,
+                    borderRadius: "18px",
+                    padding: "14px",
+                    border: "none",
+                    background: "#fafafa",
+                    color: "#09090b",
+                    fontWeight: 700,
+                    cursor: "pointer"
+                  }}
+                >
+                  {copied ? "Copied!" : "Copy Result"}
+                </button>
+
+                <button
+                  onClick={() => setShowResultModal(false)}
+                  style={{
+                    flex: 1,
+                    borderRadius: "18px",
+                    padding: "14px",
+                    border: "1px solid #3f3f46",
+                    background: "transparent",
+                    color: "#fafafa",
+                    fontWeight: 700,
+                    cursor: "pointer"
+                  }}
+                >
+                  Close
+                </button>
+              </div>
+
+              <p
+                style={{
+                  marginTop: "14px",
+                  marginBottom: 0,
+                  textAlign: "center",
+                  fontSize: "13px",
+                  color: "#71717a",
+                  lineHeight: 1.4
+                }}
+              >
+                Share it your Results! — paste your result anywhere.
+              </p>
+          
+            </motion.div>
             </motion.div>
           </motion.div>
         )}
