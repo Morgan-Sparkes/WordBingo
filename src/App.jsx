@@ -125,6 +125,7 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(false);
   const [showResultModal, setShowResultModal] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [confettiPieces, setConfettiPieces] = useState([]);
 
   useEffect(() => {
     fetch("/data/google-10000-english.txt")
@@ -175,6 +176,16 @@ export default function App() {
     }
   }, [showResultModal]);
 
+  useEffect(() => {
+  if (confettiPieces.length === 0) return;
+
+  const timer = window.setTimeout(() => {
+    setConfettiPieces([]);
+  }, 2400);
+
+  return () => window.clearTimeout(timer);
+}, [confettiPieces]);
+
   const nearWins = useMemo(() => getNearWins(selected), [selected]);
 
   const getShareText = () => {
@@ -219,6 +230,7 @@ export default function App() {
       setWinningLine(line);
       setHasWon(true);
       setShowSplash(true);
+      setConfettiPieces(createConfettiPieces());
 
       window.setTimeout(() => {
         setShowSplash(false);
@@ -235,6 +247,7 @@ export default function App() {
     setShowSplash(false);
     setShowResultModal(false);
     setCopied(false);
+    setConfettiPieces([]);
     saveJson(`${STORAGE_PREFIX}-selected-${todayKey}`, cleared);
   };
 
@@ -709,8 +722,84 @@ export default function App() {
             </motion.div>
           </motion.div>
         )}
+
+                            color: "#fafafa",
+                    fontWeight: 700,
+                    cursor: "pointer"
+                  }}
+                >
+                  Close
+                </button>
+              </div>
+
+              <p
+                style={{
+                  marginTop: "14px",
+                  marginBottom: 0,
+                  textAlign: "center",
+                  fontSize: "13px",
+                  color: "#71717a",
+                  lineHeight: 1.4
+                }}
+              >
+                Share it your Results! — paste your result anywhere.
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
-       <footer className="footer">
+
+      <AnimatePresence>
+        {confettiPieces.length > 0 && (
+          <div
+            style={{
+              position: "fixed",
+              inset: 0,
+              overflow: "hidden",
+              pointerEvents: "none",
+              zIndex: 55
+            }}
+          >
+            {confettiPieces.map((piece) => (
+              <motion.div
+                key={piece.id}
+                initial={{
+                  opacity: 1,
+                  x: 0,
+                  y: -40,
+                  rotate: 0,
+                  scale: 1
+                }}
+                animate={{
+                  opacity: 0,
+                  x: piece.drift,
+                  y: piece.drop,
+                  rotate: piece.rotate,
+                  scale: 0.9
+                }}
+                exit={{ opacity: 0 }}
+                transition={{
+                  duration: piece.duration,
+                  delay: piece.delay,
+                  ease: "easeOut"
+                }}
+                style={{
+                  position: "absolute",
+                  left: `${piece.left}%`,
+                  top: 0,
+                  width: `${piece.size}px`,
+                  height: `${piece.height}px`,
+                  background: piece.color,
+                  borderRadius: piece.round ? "999px" : "2px",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.18)"
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </AnimatePresence>
+
+      <footer className="footer">
         <p>WordBingo © 2026</p>
         <p>New Bingos every day</p>
         <p>Share with friends</p>
@@ -721,9 +810,6 @@ export default function App() {
           </a>
         </p>
       </footer>
-
     </div>
   );
-
-  
 }
