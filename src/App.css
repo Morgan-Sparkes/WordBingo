@@ -185,7 +185,7 @@
 .footer {
   margin-top: 40px;       /* pushes it lower */
   padding: 12px 10px;     /* less padding */
-  font-size: 12px;        /* smaller text */
+  font-size: 8px;        /* smaller text */
   color: var(--text);
   opacity: 0.6;           /* more subtle */
   text-align: center;
