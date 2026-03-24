@@ -631,45 +631,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div
-  style={{
-    display: "flex",
-    gap: "12px",
-    marginTop: "18px"
-  }}
->
-  <button
-    onClick={copyResult}
-    style={{
-      flex: 1,
-      borderRadius: "18px",
-      padding: "14px",
-      border: "none",
-      background: "#fafafa",
-      color: "#09090b",
-      fontWeight: 700,
-      cursor: "pointer"
-    }}
-  >
-    {copied ? "Copied!" : "Copy Result"}
-  </button>
-
-  <button
-    onClick={() => setShowResultModal(false)}
-    style={{
-      flex: 1,
-      borderRadius: "18px",
-      padding: "14px",
-      border: "1px solid #3f3f46",
-      background: "transparent",
-      color: "#fafafa",
-      fontWeight: 700,
-      cursor: "pointer"
-    }}
-  >
-    Close
-  </button>
-</div>
+              <div style={{ display: "flex", gap: "12px", marginTop: "18px" }} > <button onClick={copyResult} style={{ flex: 1, borderRadius: "18px", padding: "14px", border: "none", background: "#fafafa", color: "#09090b", fontWeight: 700, cursor: "pointer" }} > {copied ? "Copied!" : "Copy Result"} </button> <button onClick={() => setShowResultModal(false)} style={{ flex: 1, borderRadius: "18px", padding: "14px", border: "1px solid #3f3f46", background: "transparent", color: "#fafafa", fontWeight: 700, cursor: "pointer" }} > Close </button> </div> <p style={{ marginTop: "14px", marginBottom: 0, textAlign: "center", fontSize: "13px", color: "#71717a", lineHeight: 1.4 }} > Share it your Results! — paste your result anywhere. </p> </motion.div> </motion.div> )}
               </div>
             </motion.div>
           </motion.div>
