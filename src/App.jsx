@@ -177,14 +177,14 @@ export default function App() {
   }, [showResultModal]);
 
   useEffect(() => {
-  if (confettiPieces.length === 0) return;
+    if (confettiPieces.length === 0) return;
 
-  const timer = window.setTimeout(() => {
-    setConfettiPieces([]);
-  }, 2400);
+    const timer = window.setTimeout(() => {
+      setConfettiPieces([]);
+    }, 2400);
 
-  return () => window.clearTimeout(timer);
-}, [confettiPieces]);
+    return () => window.clearTimeout(timer);
+  }, [confettiPieces]);
 
   const nearWins = useMemo(() => getNearWins(selected), [selected]);
 
@@ -203,7 +203,7 @@ export default function App() {
     return [
       `WordBingo ${todayKey}`,
       ...emojiRows,
-      hasWon ? "BINGO!" : "Still playing..."
+      hasWon ? "BINGO!" : "Still playing...",
     ].join("\n");
   };
 
@@ -262,7 +262,7 @@ export default function App() {
           background: "#09090b",
           color: "#fafafa",
           fontFamily: "Poppins, sans-serif",
-          padding: "24px"
+          padding: "24px",
         }}
       >
         Loading words...
@@ -277,7 +277,7 @@ export default function App() {
         background: "#09090b",
         color: "#fafafa",
         padding: "24px 14px 32px",
-        fontFamily: "Inter, Arial, sans-serif"
+        fontFamily: "Inter, Arial, sans-serif",
       }}
     >
       <div
@@ -287,7 +287,7 @@ export default function App() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
         <motion.div
@@ -295,7 +295,7 @@ export default function App() {
           animate={{ opacity: 1, y: 0 }}
           style={{
             marginBottom: "22px",
-            width: "100%"
+            width: "100%",
           }}
         >
           <h1
@@ -304,7 +304,7 @@ export default function App() {
               fontWeight: 900,
               margin: 0,
               lineHeight: 1.08,
-              letterSpacing: "-0.03em"
+              letterSpacing: "-0.03em",
             }}
           >
             WordBingo
@@ -318,7 +318,7 @@ export default function App() {
               marginLeft: "auto",
               marginRight: "auto",
               fontSize: "clamp(14px, 3.5vw, 18px)",
-              lineHeight: 1.45
+              lineHeight: 1.45,
             }}
           >
             Click the words you’ve used today. Get 4 in a row — diagonals count.
@@ -328,7 +328,7 @@ export default function App() {
             style={{
               fontSize: "14px",
               color: "#71717a",
-              marginTop: "10px"
+              marginTop: "10px",
             }}
           >
             Daily board: {todayKey}
@@ -344,19 +344,19 @@ export default function App() {
             overflow: "hidden",
             width: "100%",
             maxWidth: "560px",
-            margin: "0 auto"
+            margin: "0 auto",
           }}
         >
           <div
             style={{
-              padding: "clamp(16px, 4vw, 24px)"
+              padding: "clamp(16px, 4vw, 24px)",
             }}
           >
             <div
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(4, 1fr)",
-                gap: "12px"
+                gap: "12px",
               }}
             >
               {board.map((word, index) => {
@@ -377,7 +377,7 @@ export default function App() {
                       border: "none",
                       padding: 0,
                       background: "transparent",
-                      cursor: hasWon ? "default" : "pointer"
+                      cursor: hasWon ? "default" : "pointer",
                     }}
                   >
                     <motion.div
@@ -387,7 +387,7 @@ export default function App() {
                         position: "relative",
                         width: "100%",
                         height: "100%",
-                        transformStyle: "preserve-3d"
+                        transformStyle: "preserve-3d",
                       }}
                     >
                       <div
@@ -412,7 +412,7 @@ export default function App() {
                             ? "0 0 0 1px rgba(16,185,129,0.15), 0 10px 25px rgba(16,185,129,0.08)"
                             : "none",
                           backfaceVisibility: "hidden",
-                          WebkitBackfaceVisibility: "hidden"
+                          WebkitBackfaceVisibility: "hidden",
                         }}
                       >
                         {word}
@@ -436,7 +436,7 @@ export default function App() {
                           color: "#ffffff",
                           transform: "rotateY(180deg)",
                           backfaceVisibility: "hidden",
-                          WebkitBackfaceVisibility: "hidden"
+                          WebkitBackfaceVisibility: "hidden",
                         }}
                       >
                         {word}
@@ -454,7 +454,7 @@ export default function App() {
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "14px",
-                width: "100%"
+                width: "100%",
               }}
             >
               <div style={{ textAlign: "center" }}>
@@ -470,14 +470,14 @@ export default function App() {
                     maxWidth: "420px",
                     marginLeft: "auto",
                     marginRight: "auto",
-                    lineHeight: 1.45
+                    lineHeight: 1.45,
                   }}
                 >
                   {hasWon
                     ? "You completed a line on today’s board."
                     : nearWins.length > 0
-                    ? "You’re one word away from a Bingo line."
-                    : "Find any full row, column, or diagonal."}
+                      ? "You’re one word away from a Bingo line."
+                      : "Find any full row, column, or diagonal."}
                 </div>
               </div>
 
@@ -486,7 +486,7 @@ export default function App() {
                   display: "flex",
                   gap: "12px",
                   width: "100%",
-                  marginTop: "6px"
+                  marginTop: "6px",
                 }}
               >
                 <button
@@ -499,7 +499,7 @@ export default function App() {
                     background: "transparent",
                     color: "#fafafa",
                     fontWeight: 700,
-                    cursor: "pointer"
+                    cursor: "pointer",
                   }}
                 >
                   Reset
@@ -518,7 +518,7 @@ export default function App() {
             maxWidth: "520px",
             marginLeft: "auto",
             marginRight: "auto",
-            lineHeight: 1.45
+            lineHeight: 1.45,
           }}
         >
           Honor system rules: just tap the words you genuinely used today.
@@ -541,7 +541,7 @@ export default function App() {
               justifyContent: "center",
               background: "rgba(0,0,0,0.55)",
               backdropFilter: "blur(4px)",
-              padding: "20px"
+              padding: "20px",
             }}
           >
             <motion.div
@@ -553,7 +553,7 @@ export default function App() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "16px"
+                gap: "16px",
               }}
             >
               <div
@@ -564,7 +564,7 @@ export default function App() {
                   lineHeight: 0.95,
                   color: "#4ade80",
                   textShadow: "0 10px 30px rgba(74,222,128,0.22)",
-                  paddingLeft: "0.15em"
+                  paddingLeft: "0.15em",
                 }}
               >
                 BINGO
@@ -575,7 +575,7 @@ export default function App() {
                   color: "#fafafa",
                   fontSize: "20px",
                   lineHeight: 1.35,
-                  marginTop: "4px"
+                  marginTop: "4px",
                 }}
               >
                 You got 4 in a row.
@@ -585,7 +585,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-           <AnimatePresence>
+      <AnimatePresence>
         {showResultModal && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -600,7 +600,7 @@ export default function App() {
               justifyContent: "center",
               background: "rgba(0,0,0,0.62)",
               backdropFilter: "blur(6px)",
-              padding: "18px"
+              padding: "18px",
             }}
           >
             <motion.div
@@ -615,34 +615,7 @@ export default function App() {
                 border: "1px solid #27272a",
                 borderRadius: "28px",
                 boxShadow: "0 30px 70px rgba(0,0,0,0.4)",
-                padding: "22px"
-              }}
-            >
-              <div style={{ textAlign: "center" }}>
-                <h2 style={{ margin: 0, fontSize: "30px" }}>BINGO!</h2>
-                <p style={{ color: "#a1a1aa" }}>
-                  You completed today’s board.
-                </p>
-              </div>
-
-              <div style={{ marginTop: "18px" }}>
-                <div style={{ whiteSpace: "pre-wrap", textAlign: "center" }}>
-                  {getShareText().split("\n").slice(1).join("\n")}
-                </div>
-              </div>
-            <motion.div
-              initial={{ y: 18, opacity: 0, scale: 0.96 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: 10, opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.22 }}
-              style={{
-                width: "100%",
-                maxWidth: "420px",
-                background: "rgba(24,24,27,0.96)",
-                border: "1px solid #27272a",
-                borderRadius: "28px",
-                boxShadow: "0 30px 70px rgba(0,0,0,0.4)",
-                padding: "22px"
+                padding: "22px",
               }}
             >
               <div style={{ textAlign: "center" }}>
@@ -650,7 +623,7 @@ export default function App() {
                   style={{
                     margin: 0,
                     fontSize: "30px",
-                    lineHeight: 1.1
+                    lineHeight: 1.1,
                   }}
                 >
                   BINGO!
@@ -662,7 +635,7 @@ export default function App() {
                     marginBottom: 0,
                     color: "#a1a1aa",
                     fontSize: "15px",
-                    lineHeight: 1.45
+                    lineHeight: 1.45,
                   }}
                 >
                   You completed today’s board.
@@ -675,7 +648,7 @@ export default function App() {
                   background: "#09090b",
                   border: "1px solid #27272a",
                   borderRadius: "20px",
-                  padding: "16px"
+                  padding: "16px",
                 }}
               >
                 <div
@@ -684,13 +657,10 @@ export default function App() {
                     textAlign: "center",
                     fontSize: "24px",
                     lineHeight: 1.45,
-                    letterSpacing: "0.08em"
+                    letterSpacing: "0.08em",
                   }}
                 >
-                  {getShareText()
-                    .split("\n")
-                    .slice(1)
-                    .join("\n")}
+                  {getShareText().split("\n").slice(1).join("\n")}
                 </div>
               </div>
 
@@ -698,7 +668,7 @@ export default function App() {
                 style={{
                   display: "flex",
                   gap: "12px",
-                  marginTop: "18px"
+                  marginTop: "18px",
                 }}
               >
                 <button
@@ -711,7 +681,7 @@ export default function App() {
                     background: "#fafafa",
                     color: "#09090b",
                     fontWeight: 700,
-                    cursor: "pointer"
+                    cursor: "pointer",
                   }}
                 >
                   {copied ? "Copied!" : "Copy Result"}
@@ -727,7 +697,7 @@ export default function App() {
                     background: "transparent",
                     color: "#fafafa",
                     fontWeight: 700,
-                    cursor: "pointer"
+                    cursor: "pointer",
                   }}
                 >
                   Close
@@ -741,13 +711,11 @@ export default function App() {
                   textAlign: "center",
                   fontSize: "13px",
                   color: "#71717a",
-                  lineHeight: 1.4
+                  lineHeight: 1.4,
                 }}
               >
-                Share it your Results! — paste your result anywhere.
+                Share your results — paste anywhere.
               </p>
-          
-            </motion.div>
             </motion.div>
           </motion.div>
         )}
@@ -761,7 +729,7 @@ export default function App() {
               position: "fixed",
               inset: 0,
               pointerEvents: "none",
-              zIndex: 70   // 👈 IMPORTANT (above modal)
+              zIndex: 70,
             }}
           >
             {confettiPieces.map((piece) => (
@@ -775,7 +743,7 @@ export default function App() {
                   left: `${piece.left}%`,
                   width: `${piece.size}px`,
                   height: `${piece.height}px`,
-                  background: piece.color
+                  background: piece.color,
                 }}
               />
             ))}
@@ -789,9 +757,7 @@ export default function App() {
         <p>New Bingos every day</p>
         <p>Share with friends</p>
         <p>
-          <a href="mailto:wordbingo.site@gmail.com">
-            wordbingo.site@gmail.com
-          </a>
+          <a href="mailto:wordbingo.site@gmail.com">wordbingo.site@gmail.com</a>
         </p>
       </footer>
     </div>
