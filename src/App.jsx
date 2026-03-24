@@ -89,7 +89,32 @@ function loadJson(key, fallback) {
 function saveJson(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
+const CONFETTI_COLORS = [
+  "#22c55e",
+  "#4ade80",
+  "#86efac",
+  "#facc15",
+  "#fb7185",
+  "#38bdf8",
+  "#c084fc",
+  "#f97316",
+];
 
+function createConfettiPieces(count = 42) {
+  return Array.from({ length: count }, (_, i) => ({
+    id: `${Date.now()}-${i}`,
+    left: Math.random() * 100,
+    size: 8 + Math.random() * 10,
+    height: 10 + Math.random() * 14,
+    drift: (Math.random() - 0.5) * 220,
+    drop: 650 + Math.random() * 300,
+    rotate: 180 + Math.random() * 540,
+    duration: 1.6 + Math.random() * 0.9,
+    delay: Math.random() * 0.18,
+    color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+    round: Math.random() > 0.65,
+  }));
+}
 export default function App() {
   const todayKey = useMemo(() => getTodayKey(), []);
   const [wordsLoaded, setWordsLoaded] = useState(false);
