@@ -585,7 +585,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
+           <AnimatePresence>
         {showResultModal && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -619,179 +619,55 @@ export default function App() {
               }}
             >
               <div style={{ textAlign: "center" }}>
-                <h2
-                  style={{
-                    margin: 0,
-                    fontSize: "30px",
-                    lineHeight: 1.1
-                  }}
-                >
-                  BINGO!
-                </h2>
-
-                <p
-                  style={{
-                    marginTop: "10px",
-                    marginBottom: 0,
-                    color: "#a1a1aa",
-                    fontSize: "15px",
-                    lineHeight: 1.45
-                  }}
-                >
+                <h2 style={{ margin: 0, fontSize: "30px" }}>BINGO!</h2>
+                <p style={{ color: "#a1a1aa" }}>
                   You completed today’s board.
                 </p>
               </div>
 
-              <div
-                style={{
-                  marginTop: "18px",
-                  background: "#09090b",
-                  border: "1px solid #27272a",
-                  borderRadius: "20px",
-                  padding: "16px"
-                }}
-              >
-                <div
-                  style={{
-                    whiteSpace: "pre-wrap",
-                    textAlign: "center",
-                    fontSize: "24px",
-                    lineHeight: 1.45,
-                    letterSpacing: "0.08em"
-                  }}
-                >
-                  {getShareText()
-                    .split("\n")
-                    .slice(1)
-                    .join("\n")}
+              <div style={{ marginTop: "18px" }}>
+                <div style={{ whiteSpace: "pre-wrap", textAlign: "center" }}>
+                  {getShareText().split("\n").slice(1).join("\n")}
                 </div>
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  gap: "12px",
-                  marginTop: "18px"
-                }}
-              >
-                <button
-                  onClick={copyResult}
-                  style={{
-                    flex: 1,
-                    borderRadius: "18px",
-                    padding: "14px",
-                    border: "none",
-                    background: "#fafafa",
-                    color: "#09090b",
-                    fontWeight: 700,
-                    cursor: "pointer"
-                  }}
-                >
+              <div style={{ display: "flex", gap: "12px", marginTop: "18px" }}>
+                <button onClick={copyResult}>
                   {copied ? "Copied!" : "Copy Result"}
                 </button>
 
-                <button
-                  onClick={() => setShowResultModal(false)}
-                  style={{
-                    flex: 1,
-                    borderRadius: "18px",
-                    padding: "14px",
-                    border: "1px solid #3f3f46",
-                    background: "transparent",
-                    color: "#fafafa",
-                    fontWeight: 700,
-                    cursor: "pointer"
-                  }}
-                >
+                <button onClick={() => setShowResultModal(false)}>
                   Close
                 </button>
               </div>
-
-              <p
-                style={{
-                  marginTop: "14px",
-                  marginBottom: 0,
-                  textAlign: "center",
-                  fontSize: "13px",
-                  color: "#71717a",
-                  lineHeight: 1.4
-                }}
-              >
-                Share it your Results! — paste your result anywhere.
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-
-                            color: "#fafafa",
-                    fontWeight: 700,
-                    cursor: "pointer"
-                  }}
-                >
-                  Close
-                </button>
-              </div>
-
-              <p
-                style={{
-                  marginTop: "14px",
-                  marginBottom: 0,
-                  textAlign: "center",
-                  fontSize: "13px",
-                  color: "#71717a",
-                  lineHeight: 1.4
-                }}
-              >
-                Share it your Results! — paste your result anywhere.
-              </p>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
+      {/* CONFETTI */}
       <AnimatePresence>
         {confettiPieces.length > 0 && (
           <div
             style={{
               position: "fixed",
               inset: 0,
-              overflow: "hidden",
               pointerEvents: "none",
-              zIndex: 55
+              zIndex: 70   // 👈 IMPORTANT (above modal)
             }}
           >
             {confettiPieces.map((piece) => (
               <motion.div
                 key={piece.id}
-                initial={{
-                  opacity: 1,
-                  x: 0,
-                  y: -40,
-                  rotate: 0,
-                  scale: 1
-                }}
-                animate={{
-                  opacity: 0,
-                  x: piece.drift,
-                  y: piece.drop,
-                  rotate: piece.rotate,
-                  scale: 0.9
-                }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  duration: piece.duration,
-                  delay: piece.delay,
-                  ease: "easeOut"
-                }}
+                initial={{ y: -40, opacity: 1 }}
+                animate={{ y: piece.drop, x: piece.drift, opacity: 0 }}
+                transition={{ duration: piece.duration }}
                 style={{
                   position: "absolute",
                   left: `${piece.left}%`,
-                  top: 0,
                   width: `${piece.size}px`,
                   height: `${piece.height}px`,
-                  background: piece.color,
-                  borderRadius: piece.round ? "999px" : "2px",
-                  boxShadow: "0 2px 10px rgba(0,0,0,0.18)"
+                  background: piece.color
                 }}
               />
             ))}
@@ -799,12 +675,12 @@ export default function App() {
         )}
       </AnimatePresence>
 
+      {/* FOOTER */}
       <footer className="footer">
         <p>WordBingo © 2026</p>
         <p>New Bingos every day</p>
         <p>Share with friends</p>
         <p>
-          Contact:{" "}
           <a href="mailto:wordbingo.site@gmail.com">
             wordbingo.site@gmail.com
           </a>
