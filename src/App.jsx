@@ -684,6 +684,20 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+       <footer className="footer">
+        <p>WordBingo © 2026</p>
+        <p>New Bingos every day</p>
+        <p>Share with friends</p>
+        <p>
+          Contact:{" "}
+          <a href="mailto:wordbingo.site@gmail.com">
+            wordbingo.site@gmail.com
+          </a>
+        </p>
+      </footer>
+
     </div>
   );
+
+  
 }
