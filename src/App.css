@@ -182,3 +182,25 @@
     border-right-color: var(--border);
   }
 }
+.footer {
+  margin-top: 28px;
+  padding: 20px;
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.8;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer p {
+  margin: 4px 0;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
