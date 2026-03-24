@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "./App.css";
 
 const GRID_SIZE = 4;
 const STORAGE_PREFIX = "wordbingo-v1";
