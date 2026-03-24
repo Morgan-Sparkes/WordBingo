@@ -668,7 +668,9 @@ export default function App() {
   >
     Close
   </button>
-  <p
+</div>
+
+<p
   style={{
     marginTop: "14px",
     marginBottom: 0,
