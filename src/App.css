@@ -183,17 +183,17 @@
   }
 }
 .footer {
-  margin-top: 28px;
-  padding: 20px;
-  font-size: 14px;
+  margin-top: 40px;       /* pushes it lower */
+  padding: 12px 10px;     /* less padding */
+  font-size: 12px;        /* smaller text */
   color: var(--text);
-  opacity: 0.8;
+  opacity: 0.6;           /* more subtle */
   text-align: center;
   border-top: 1px solid var(--border);
 }
 
 .footer p {
-  margin: 4px 0;
+  margin: 2px 0;          /* tighter spacing */
 }
 
 .footer a {
